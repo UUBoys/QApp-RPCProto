@@ -1,0 +1,6 @@
+version: v1beta1
+directories:
+  - cerberus
+  - hermes
+  - musicQ
+  - zeus
