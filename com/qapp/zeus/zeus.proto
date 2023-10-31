@@ -5,42 +5,84 @@ package com.qapp.zeus;
 message Establishment {
     int32 id = 1;
     string name = 2;
-    string description = 3;
-    string image = 4;
+    optional string description = 3;
+    optional string image = 4;
     string street = 5;
     string city = 6;
     string country = 7;
 }
 
-service Zeus {
-    rpc GetEstablishments(GetEstablishmentsRequest) returns (GetEstablishmentsResponse) {}
-    rpc CreateEstablishment(CreateEstablishmentRequest) returns (CreateEstablishmentResponse) {}
-    rpc SetEstablishmentModerator(SetEstablishmentModeratorRequest) returns (SetEstablishmentModeratorResponse) {}
+message Event {
+    int32 id = 1;
+    string name = 2;
+    optional string description = 3;
+    string date = 4;
+    optional string image = 5;
+    float price = 6;
+    int32 establishmentId = 7;
+    int32 maximumCapacity = 8;
 }
 
-message GetEstablishmentsRequest {
+service Zeus {
+    rpc GetEstablishments(GetEstablishmentsRequest) returns (GetEstablishmentsResponse) {}
+    rpc GetEvents(GetEventsRequest) returns (GetEventsResponse) {}
+    rpc CreateEstablishment(CreateEstablishmentRequest) returns (CreateEstablishmentRequest) {}
+    rpc CreateEvent(CreateEventRequest) returns (CreateEventRequest) {}
+    rpc PurchaseTicket(PurchaseTicketRequest) returns (PurchaseTicketRequest) {}
+    rpc RefundTicket(RefundTicketRequest) returns (RefundTicketResponse) {}
+    rpc SetEstablishmentRole(SetEstablishmentRoleRequest) returns (SetEstablishmentRoleRequest) {}
 }
+
+message GetEstablishmentsRequest {}
+
+message GetEventsRequest {}
 
 message GetEstablishmentsResponse {
     repeated Establishment establishments = 1;
 }
 
 message CreateEstablishmentRequest {
-    Establishment establishment = 1;
+    string name = 1;
+    optional string description = 2;
+    optional string image = 3;
+    string street = 4;
+    string city = 5;
+    string country = 6;
+    int32 ownerId = 7;
 }
 
-message CreateEstablishmentResponse {
-    Establishment establishment = 1;
-}
-
-message SetEstablishmentModeratorRequest {
+message SetEstablishmentRoleRequest {
     string establishmentId = 1;
     int32 userId = 2;
     string role = 3;
 }
 
-message SetEstablishmentModeratorResponse {
-    string establishmentId = 1;
+message GetEventsResponse {
+    repeated Event events = 1;
+}
+
+message CreateEventRequest {
+    string name = 1;
+    optional string description = 2;
+    string date = 3;
+    optional string image = 4;
+    float price = 5;
+    int32 establishmentId = 6;
+    int32 maximumCapacity = 7;
+}
+
+message PurchaseTicketRequest {
+    int32 eventId = 1;
     int32 userId = 2;
-    string role = 3;
+}
+
+message RefundTicketRequest {
+    string uuid = 1;
+    int32 userId = 2;
+}
+
+message RefundTicketResponse {
+    string uuid = 1;
+    int32 userId = 2;
+    bool revoked = 3;
 }
