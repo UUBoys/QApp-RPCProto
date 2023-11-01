@@ -17,7 +17,7 @@ message Event {
     string name = 2;
     optional string description = 3;
     string start_date = 4;
-    string end_data = 5;
+    string end_date = 5;
     optional string image = 6;
     float price = 7;
     int32 establishmentId = 8;
@@ -95,3 +95,4 @@ message RefundTicketResponse {
     int32 userId = 2;
     bool revoked = 3;
 }
+
