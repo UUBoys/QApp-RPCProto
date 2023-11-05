@@ -6,10 +6,11 @@ message Establishment {
     int32 id = 1;
     string name = 2;
     optional string description = 3;
-    optional string image = 4;
-    string street = 5;
-    string city = 6;
-    string country = 7;
+    optional string profileImage = 4;
+    optional string coverImage = 5;
+    string street = 6;
+    string city = 7;
+    string country = 8;
 }
 
 message Event {
@@ -38,12 +39,19 @@ service Zeus {
     rpc CreateEvent(CreateEventRequest) returns (Event) {}
     rpc PurchaseTicket(PurchaseTicketRequest) returns (Ticket) {}
     rpc RefundTicket(RefundTicketRequest) returns (RefundTicketResponse) {}
-    rpc SetEstablishmentRole(SetEstablishmentRoleRequest) returns (SetEstablishmentRoleRequest) {}
+    rpc SetEstablishmentRole(SetEstablishmentRoleRequest) returns (SetEstablishmentRoleResponse) {}
+    rpc UpdateEstablishment(UpdateEstablishmentRequest) returns (Establishment) {}
+    rpc UpdateEvent(UpdateEventRequest) returns (Event) {}
+    rpc GetEstablishment(GetEstablishmentRequest) returns (Establishment) {}
 }
 
 message GetEstablishmentsRequest {}
 
 message GetEventsRequest {}
+
+message GetEstablishmentRequest {
+    int32 id = 1;
+}
 
 message GetEstablishmentsResponse {
     repeated Establishment establishments = 1;
@@ -52,15 +60,23 @@ message GetEstablishmentsResponse {
 message CreateEstablishmentRequest{
     string name = 1;
     optional string description = 2;
-    optional string image = 3;
-    string street = 4;
-    string city = 5;
-    string country = 6;
-    int32 ownerId = 7;
+    optional string profileImage = 3;
+    optional string coverImage = 4;
+    string street = 5;
+    string city = 6;
+    string country = 7;
+    int32 ownerId = 8;
 }
 
 message SetEstablishmentRoleRequest {
-    string establishmentId = 1;
+    int32 updaterId = 1;
+    int32 establishmentId = 2;
+    int32 userId = 3;
+    string role = 4;
+}
+
+message SetEstablishmentRoleResponse {
+    int32 establishmentId = 1;
     int32 userId = 2;
     string role = 3;
 }
@@ -96,3 +112,27 @@ message RefundTicketResponse {
     bool revoked = 3;
 }
 
+message UpdateEstablishmentRequest {
+    int32 updater_id = 1;
+    int32 id = 2;
+    optional string name = 3;
+    optional string description = 4;
+    optional string profileImage = 5;
+    optional string coverImage = 6;
+    optional string street = 7;
+    optional string city = 8;
+    optional string country = 9;
+}
+
+message UpdateEventRequest {
+    int32 updaterId = 1;
+    int32 establishmentId = 2;
+    string uuid = 3;
+    optional string name = 4;
+    optional string description = 5;
+    optional string start_date = 6;
+    optional string end_date = 7;
+    optional string image = 8;
+    optional float price = 9;
+    optional int32 maximumCapacity = 10;
+}
