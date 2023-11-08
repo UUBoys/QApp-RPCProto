@@ -20,7 +20,8 @@ message EventAvailableTickets{
     int32 id = 1;
     int32 event_id = 2;
     string ticket_name = 3;
-    int32 quantity  = 4;
+    float price = 4;
+    int32 quantity = 5;
 }
 
 message TopupCreditsRequest {
