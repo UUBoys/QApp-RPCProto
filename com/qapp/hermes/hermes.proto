@@ -5,7 +5,7 @@ package com.qapp.hermes;
 service CreditService {
     rpc TopupCredits(TopupCreditsRequest) returns (CreditsOperationResponse) {}
     rpc GetCredits(GetCreditsRequest) returns (CreditStatusResponse) {}
-    rpc Purchase(PurchaseRequest) returns (CreditsOperationResponse) {}
+    rpc Purchase(PurchaseRequest) returns (PurchaseTicketResponse) {}
     rpc GetEventAvailableTickets(GetEventAvailableTicketsRequest) returns (GetEventAvailableTicketsResponse) {}
 }
 message GetEventAvailableTicketsResponse {
@@ -33,7 +33,11 @@ message CreditsOperationResponse {
     int32 user_id = 1;
     int32 old_balance = 2;
     int32 new_balance = 3;
-    EventAvailableTickets ticket = 4;
+}
+
+message PurchaseTicketResponse {
+    CreditsOperationResponse creditOperation = 1;
+    EventAvailableTickets Ticket = 2;
 }
 
 message GetCreditsRequest {
