@@ -6,6 +6,21 @@ service CreditService {
     rpc TopupCredits(TopupCreditsRequest) returns (CreditsOperationResponse) {}
     rpc GetCredits(GetCreditsRequest) returns (CreditStatusResponse) {}
     rpc Purchase(PurchaseRequest) returns (CreditsOperationResponse) {}
+    rpc GetEventAvailableTickets(GetEventAvailableTicketsRequest) returns (GetEventAvailableTicketsResponse) {}
+}
+message GetEventAvailableTicketsResponse {
+    repeated EventAvailableTickets tickets = 1;
+}
+
+message GetEventAvailableTicketsRequest {
+    int32 event_id = 2;
+}
+
+message EventAvailableTickets{
+    int32 id = 1;
+    int32 event_id = 2;
+    string ticket_name = 3;
+    int32 quantity  = 4;
 }
 
 message TopupCreditsRequest {
@@ -29,6 +44,7 @@ message CreditStatusResponse {
 }
 
 message PurchaseRequest {
-    int32 user_id = 1;
-    int32 amount = 2;
+    int32 event_id = 1;
+    int32 user_id = 2;
+    int32 ticket_id = 3;
 }
