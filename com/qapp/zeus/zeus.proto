@@ -35,6 +35,7 @@ message Ticket{
 service Zeus {
     rpc GetEstablishments(GetEstablishmentsRequest) returns (GetEstablishmentsResponse) {}
     rpc GetEvents(GetEventsRequest) returns (GetEventsResponse) {}
+    rpc GetEventsForEstablishment(GetEventsForEstablishmentRequest) returns (GetEventsResponse) {}
     rpc CreateEstablishment(CreateEstablishmentRequest) returns (Establishment) {}
     rpc CreateEvent(CreateEventRequest) returns (Event) {}
     rpc PurchaseTicket(PurchaseTicketRequest) returns (Ticket) {}
@@ -53,6 +54,10 @@ message GetEstablishmentsForUserRequest {
 }
 
 message GetEventsRequest {}
+
+message GetEventsForEstablishmentRequest {
+    int32 establishmentId = 1;
+}
 
 message GetEstablishmentRequest {
     int32 id = 1;
