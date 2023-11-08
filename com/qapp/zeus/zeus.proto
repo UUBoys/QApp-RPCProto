@@ -25,11 +25,11 @@ message Event {
     int32 maximumCapacity = 9;
 }
 
-message Ticket{
-    string id = 1;
+message TicketPurchaseResult{
+    int32 id = 1;
     int32 user_id = 2;
-    string event_id = 3;
-    bool revoked = 4;
+    int32 event_id = 3;
+    float new_balance = 4;
 }
 
 service Zeus {
@@ -38,7 +38,7 @@ service Zeus {
     rpc GetEventsForEstablishment(GetEventsForEstablishmentRequest) returns (GetEventsResponse) {}
     rpc CreateEstablishment(CreateEstablishmentRequest) returns (Establishment) {}
     rpc CreateEvent(CreateEventRequest) returns (Event) {}
-    rpc PurchaseTicket(PurchaseTicketRequest) returns (Ticket) {}
+    rpc PurchaseTicket(PurchaseTicketRequest) returns (TicketPurchaseResult) {}
     rpc RefundTicket(RefundTicketRequest) returns (RefundTicketResponse) {}
     rpc SetEstablishmentRole(SetEstablishmentRoleRequest) returns (SetEstablishmentRoleResponse) {}
     rpc UpdateEstablishment(UpdateEstablishmentRequest) returns (Establishment) {}
@@ -108,7 +108,8 @@ message CreateEventRequest {
 
 message PurchaseTicketRequest {
     int32 eventId = 1;
-    int32 userId = 2;
+    int32 ticketId = 2;
+    int32 userId = 3;
 }
 
 message RefundTicketRequest {
