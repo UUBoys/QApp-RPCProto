@@ -28,12 +28,13 @@ message Event {
 message TicketPurchaseResult{
     int32 id = 1;
     int32 user_id = 2;
-    int32 event_id = 3;
+    string event_id = 3;
     float new_balance = 4;
 }
 
 service Zeus {
     rpc GetEstablishments(GetEstablishmentsRequest) returns (GetEstablishmentsResponse) {}
+    rpc GetEvent(GetEventRequest) returns (Event) {}
     rpc GetEvents(GetEventsRequest) returns (GetEventsResponse) {}
     rpc GetEventsForEstablishment(GetEventsForEstablishmentRequest) returns (GetEventsResponse) {}
     rpc CreateEstablishment(CreateEstablishmentRequest) returns (Establishment) {}
@@ -45,6 +46,10 @@ service Zeus {
     rpc UpdateEvent(UpdateEventRequest) returns (Event) {}
     rpc GetEstablishment(GetEstablishmentRequest) returns (Establishment) {}
     rpc GetEstablishmentForUser(GetEstablishmentsForUserRequest) returns (GetEstablishmentsResponse) {}
+}
+
+message GetEventRequest {
+    string id = 1;
 }
 
 message GetEstablishmentsRequest {}
@@ -107,7 +112,7 @@ message CreateEventRequest {
 }
 
 message PurchaseTicketRequest {
-    int32 eventId = 1;
+    string eventId = 1;
     int32 ticketId = 2;
     int32 userId = 3;
 }
