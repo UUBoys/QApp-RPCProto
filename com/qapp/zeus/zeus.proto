@@ -109,6 +109,7 @@ message CreateEventRequest {
     float price = 6;
     int32 establishmentId = 7;
     int32 maximumCapacity = 8;
+    string ticketName = 9;
 }
 
 message PurchaseTicketRequest {
