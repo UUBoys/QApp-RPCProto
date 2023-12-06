@@ -8,8 +8,24 @@ service CreditService {
     rpc Purchase(PurchaseRequest) returns (PurchaseTicketResponse) {}
     rpc CreateEventTickets(CreateEventTicketsRequest) returns (CreateEventTicketsResponse) {}
     rpc GetEventAvailableTickets(GetEventAvailableTicketsRequest) returns (GetEventAvailableTicketsResponse) {}
+    rpc GetAllTickets(GetAllTIcketsRequest) returns (GetAllTicketsResponse) {}
+    rpc GetUserTickets(GetUserTicketsRequest) returns (GetUserTicketsResponse) {}
 }
 message GetEventAvailableTicketsResponse {
+    repeated EventAvailableTickets tickets = 1;
+}
+
+message GetAllTIcketsRequest {}
+
+message GetAllTicketsResponse {
+    repeated EventAvailableTickets tickets = 1;
+}
+
+message GetUserTicketsRequest {
+    int32 user_id = 1;
+}
+
+message GetUserTicketsResponse {
     repeated EventAvailableTickets tickets = 1;
 }
 
