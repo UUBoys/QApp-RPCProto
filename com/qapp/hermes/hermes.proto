@@ -26,7 +26,7 @@ message GetUserTicketsRequest {
 }
 
 message GetUserTicketsResponse {
-    repeated EventAvailableTickets tickets = 1;
+    repeated UserTicket tickets = 1;
 }
 
 message GetEventAvailableTicketsRequest {
@@ -39,6 +39,15 @@ message EventAvailableTickets {
     string ticket_name = 3;
     float price = 4;
     int32 quantity = 5;
+}
+
+message UserTicket {
+    int32 user_id = 1;
+    int32 ticket_id = 2;
+    string event_id = 3;
+    string ticket_name = 4;
+    float price = 5;
+    int32 bought_quantity = 6;
 }
 
 message TopupCreditsRequest {
