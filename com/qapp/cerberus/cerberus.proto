@@ -26,7 +26,7 @@ message GoogleLoginRequest {
 }
 
 message GetUserDataRequest {
-  int32 userId = 1;
+  string userId = 1;
 }
 
 message GetUserDataResponse {
@@ -35,27 +35,25 @@ message GetUserDataResponse {
   string userImage = 3;
   string firstName = 4;
   string lastName = 5;
-  string role = 6;
 }
 
 message UpdateUserDataRequest {
-  int32 userId = 1;
+  string userId = 1;
   optional string username = 2;
   optional string email = 3;
   optional string password = 4;
   optional string userImage = 5;
   optional string firstName = 6;
   optional string lastName = 7;
-  optional string role = 8;
 }
 
 message UpdateUserDataResponse {
-  string username = 1;
-  string email = 2;
-  string userImage = 3;
-  string firstName = 4;
-  string lastName = 5;
-  string role = 6;
+  string userId = 1;
+  string username = 2;
+  string email = 3;
+  string userImage = 4;
+  string firstName = 5;
+  string lastName = 6;
 }
 
 service AuthService {
