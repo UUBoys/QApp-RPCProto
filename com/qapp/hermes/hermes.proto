@@ -10,7 +10,17 @@ service CreditService {
     rpc GetEventAvailableTickets(GetEventAvailableTicketsRequest) returns (GetEventAvailableTicketsResponse) {}
     rpc GetAllTickets(GetAllTIcketsRequest) returns (GetAllTicketsResponse) {}
     rpc GetUserTickets(GetUserTicketsRequest) returns (GetUserTicketsResponse) {}
+    rpc RemoveEventTickets(RemoveEventTicketsRequest) returns (RemoveEventTicketsResponse) {}
 }
+
+message RemoveEventTicketsRequest {
+    string event_id = 1;
+}
+
+message RemoveEventTicketsResponse {
+    bool success = 1;
+}
+
 message GetEventAvailableTicketsResponse {
     repeated EventAvailableTickets tickets = 1;
 }
