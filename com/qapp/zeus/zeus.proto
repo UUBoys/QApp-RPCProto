@@ -47,6 +47,19 @@ service Zeus {
     rpc GetEstablishment(GetEstablishmentRequest) returns (Establishment) {}
     rpc GetEstablishmentForUser(GetEstablishmentsForUserRequest) returns (GetEstablishmentsResponse) {}
     rpc IsManagerOfEstablishment(IsManagerOfEstablishmentRequest) returns (IsManagerOfEstablishmentResponse) {}
+    rpc RemoveEvent(RemoveEventRequest) returns (RemoveEventResponse) {}
+}
+
+message RemoveEventRequest {
+    string updaterId = 1;
+    string establishmentId = 2;
+    string eventId = 3;
+}
+
+message RemoveEventResponse {
+    string establishmentId = 1;
+    string eventId = 2;
+    bool removed = 3;
 }
 
 message IsManagerOfEstablishmentRequest {
