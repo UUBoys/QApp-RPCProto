@@ -166,13 +166,12 @@ message UpdateEstablishmentRequest {
 
 message UpdateEventRequest {
     string updaterId = 1;
-    string establishmentId = 2;
-    string uuid = 3;
-    optional string name = 4;
-    optional string description = 5;
-    optional string start_date = 6;
-    optional string end_date = 7;
-    optional string image = 8;
-    optional float price = 9;
-    optional int32 maximumCapacity = 10;
+    string uuid = 2;
+    optional string name = 3;
+    optional string description = 4;
+    optional string start_date = 5;
+    optional string end_date = 6;
+    optional string image = 7;
+    optional float price = 8;
+    optional int32 maximumCapacity = 9;
 }
