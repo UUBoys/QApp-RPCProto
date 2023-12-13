@@ -22,7 +22,7 @@ message GetAllTicketsResponse {
 }
 
 message GetUserTicketsRequest {
-    int32 user_id = 1;
+    string user_id = 1;
 }
 
 message GetUserTicketsResponse {
@@ -34,7 +34,7 @@ message GetEventAvailableTicketsRequest {
 }
 
 message EventAvailableTickets {
-    int32 id = 1;
+    string id = 1;
     string event_id = 2;
     string ticket_name = 3;
     float price = 4;
@@ -42,8 +42,8 @@ message EventAvailableTickets {
 }
 
 message UserTicket {
-    int32 user_id = 1;
-    int32 ticket_id = 2;
+    string user_id = 1;
+    string ticket_id = 2;
     string event_id = 3;
     string ticket_name = 4;
     float price = 5;
@@ -51,12 +51,12 @@ message UserTicket {
 }
 
 message TopupCreditsRequest {
-    int32 user_id = 1;
+    string user_id = 1;
     int32 amount = 2;
 }
 
 message CreditsOperationResponse {
-    int32 user_id = 1;
+    string user_id = 1;
     int32 old_balance = 2;
     int32 new_balance = 3;
 }
@@ -67,18 +67,18 @@ message PurchaseTicketResponse {
 }
 
 message GetCreditsRequest {
-    int32 user_id = 1;
+    string user_id = 1;
 }
 
 message CreditStatusResponse {
-    int32 user_id = 1;
+    string user_id = 1;
     int32 balance = 2;
 }
 
 message PurchaseRequest {
     string event_id = 1;
-    int32 user_id = 2;
-    int32 ticket_id = 3;
+    string user_id = 2;
+    string ticket_id = 3;
 }
 
 message CreateEventTicketsRequest {
@@ -90,5 +90,5 @@ message CreateEventTicketsRequest {
 
 message CreateEventTicketsResponse {
     string event_id = 1;
-    int32 ticket_id = 2;
+    string ticket_id = 2;
 }
