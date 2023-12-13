@@ -52,8 +52,7 @@ service Zeus {
 
 message RemoveEventRequest {
     string updaterId = 1;
-    string establishmentId = 2;
-    string eventId = 3;
+    string eventId = 2;
 }
 
 message RemoveEventResponse {
