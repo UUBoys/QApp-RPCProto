@@ -59,6 +59,7 @@ message UserTicket {
     string ticket_name = 4;
     float price = 5;
     int32 bought_quantity = 6;
+    string createdAt = 7;
 }
 
 message TopupCreditsRequest {
