@@ -49,6 +49,7 @@ message EventAvailableTickets {
     string ticket_name = 3;
     float price = 4;
     int32 quantity = 5;
+    string createdAt = 6;
 }
 
 message UserTicket {
